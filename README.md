@@ -8,6 +8,7 @@ Skill universal para **Antigravity**, **Claude Code** e **Codex** que executa au
 - **Modo Follow-up (Reauditoria):** Revalida novos commits enviados após uma revisão anterior, atualizando o estado de cada pendência com evidência técnica por commit.
 - **Cruzamento Template vs. Código:** Verifica todas as seções do template do PR (Identificação do PR, O que foi entregue & Melhorias, Checklist de Padrões do Projeto, Como Testar Rapidamente e Documentação).
 - **Classificação Estrita de Severidade:** Categoriza achados em `[Alta]` (bloqueia o merge), `[Média]` (deve ser corrigido no mesmo ciclo) e `[Baixa]` (correção recomendada).
+- **Markdown pronto para o GitHub:** Gera o relatório sem indentação acidental, com resumo executivo, evidências, seções secundárias recolhíveis e recomendação final acionável.
 
 ---
 
@@ -58,6 +59,18 @@ Quando novos commits forem enviados para corrigir apontamentos:
 ```text
 Use a skill pr-auditor em modo follow-up para verificar os novos commits deste PR.
 ```
+
+## Padrão do relatório
+
+A auditoria completa segue um modelo único para comentários e reviews no GitHub:
+
+1. identificação do PR, snapshot auditado e veredito;
+2. resumo executivo e contagem por severidade;
+3. achados com cenário, evidência, impacto e correção esperada;
+4. itens verificados, comandos executados e conformidade em seções recolhíveis;
+5. registro das limitações e recomendação final com os passos que liberam o merge.
+
+O relatório não deve ser envolvido integralmente em bloco de código nem possuir quatro espaços no início das linhas, pois isso quebra a renderização do Markdown no GitHub.
 
 ---
 

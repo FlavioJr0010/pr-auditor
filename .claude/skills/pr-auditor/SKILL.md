@@ -50,6 +50,18 @@ Classifique cada achado em exatamente um nível:
 
 ## 4. Formato de Saída — Modo Auditoria Completa
 
+### 4.1 Padrão de apresentação no GitHub
+
+O relatório deve ser entregue como Markdown pronto para colar na aba **Write** de um comentário ou review do GitHub. Siga estas regras:
+
+1. **Nunca envolva o relatório completo em um bloco de código** e nunca adicione quatro espaços no início das linhas. Use blocos cercados por crases somente para comandos, código e saídas reproduzidas.
+2. Comece com título, metadados essenciais e veredito. Depois do cabeçalho, use uma citação (`>`) de uma frase para explicar a decisão.
+3. Mantenha o resumo executivo curto e apresente a contagem dos achados antes dos detalhes.
+4. Em cada achado, preserve esta ordem: **Cenário**, **Evidência reproduzida**, **Impacto** e **Correção esperada**.
+5. Use tabelas para informações comparáveis. Coloque seções secundárias extensas, como itens sem defeito, validações e conformidade, em `<details>` para facilitar a leitura no GitHub.
+6. Termine com **Registro** e **Recomendação final**, incluindo uma lista objetiva do que libera o merge.
+7. Substitua todos os placeholders por evidência real. Remova seções sem conteúdo aplicável em vez de inventar dados.
+
 Use esta estrutura exata quando for a auditoria principal do PR:
 
 ```markdown
@@ -66,6 +78,8 @@ Use esta estrutura exata quando for a auditoria principal do PR:
 **Validação local:** <Resumo build dos e executados lint, testes, typecheck>  
 **Checklist na descrição:** <Avaliação conformidade da declarações do e objetiva template>  
 **Veredito:** **<Aprovar Solicitar alterações antes do merge |>.** <Resumo 1 de do frase motivo.>
+
+> <Uma frase objetiva explicando por que o PR pode ou não pode ser integrado.>
 
 ---
 
@@ -98,21 +112,23 @@ Use esta estrutura exata quando for a auditoria principal do PR:
 
 ---
 
-## Itens verificados sem defeito
+<details>
+<summary><strong>✅ Itens verificados sem defeito</strong></summary>
 
 | Área | Resultado |
 |---|---|
 | <Item/Contrato verificado> | ✅ <Confirmado com curta evidência> |
 
----
+</details>
 
-## Validações executadas
+<details>
+<summary><strong>🧪 Validações executadas</strong></summary>
 
 | Verificação | Resultado |
 |---|---|
 | `<comando executado>` | <✅ ou ❌ ou ⚠️ com resumo objetivo> |
 
----
+</details>
 
 ## Cobertura de testes do PR
 
@@ -120,11 +136,14 @@ Use esta estrutura exata quando for a auditoria principal do PR:
 
 ---
 
-## Conformidade com a descrição do PR
+<details>
+<summary><strong>📋 Conformidade com a descrição do PR</strong></summary>
 
 | Declaração da descrição | Auditoria |
 |---|---|
 | <Item PR declarado no> | <✅ Confirmado | ⚠️ Parcial | ❌ Incorreto + motivo> |
+
+</details>
 
 ---
 
@@ -134,8 +153,13 @@ Use esta estrutura exata quando for a auditoria principal do PR:
 **Commits auditados:** `<lista de commits>`  
 **Arquivos modificados auditados:** <lista de arquivos>  
 **Limitações:** <O ambiente neste não pôde que ser testado>  
-**Alterações realizadas pela auditoria:** Nenhuma alteração persistente aplicada ao repositório; worktree limpo ao final.  
-**Recomendação final:** **<Decisão destrava do e final lista merge. o objetiva que>**
+**Alterações realizadas pela auditoria:** Nenhuma alteração persistente aplicada ao repositório; worktree limpo ao final.
+
+## Recomendação final
+
+**<Aprovar | Solicitar alterações antes do merge>.**
+
+<Lista numerada e objetiva do que ainda precisa acontecer para liberar o merge, quando aplicável.>
 
 ```
 
